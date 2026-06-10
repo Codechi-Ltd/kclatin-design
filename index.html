@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ── RESET & TOKENS ── */
         *,
@@ -76,6 +77,15 @@
         ::-webkit-scrollbar-thumb {
             background: var(--coral);
             border-radius: 2px
+        }
+
+        /* ── ICON STYLES ── */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            height: 1em;
         }
 
         /* ══════════════════════════════════════════
@@ -2251,13 +2261,14 @@
         </ul>
         <div class="nav-right">
             <div class="nav-social">
-                <a href="#" title="Instagram">📷</a>
-                <a href="#" title="TikTok">🎵</a>
-                <a href="#" title="WhatsApp">💬</a>
-                <a href="#" title="Facebook">👥</a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
             </div>
             <button class="nav-cta" onclick="scrollTo('booking')">Book Now</button>
-            <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+            <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu"><i
+                    class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -2270,21 +2281,26 @@
         <a href="#booking" onclick="closeMenu()">Book</a>
         <a href="#pricing" onclick="closeMenu()">Pricing</a>
         <div class="mobile-social">
-            <a href="#" title="Instagram">📷</a>
-            <a href="#" title="TikTok">🎵</a>
-            <a href="#" title="WhatsApp">💬</a>
-            <a href="#" title="Facebook">👥</a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
         </div>
     </div>
 
     <!-- FLOATING SOCIAL DOCK -->
     <div class="social-dock" aria-label="Social links">
         <div class="dock-line"></div>
-        <a href="#" class="dock-link" title="Instagram">📷<span class="dock-label">Instagram</span></a>
-        <a href="#" class="dock-link" title="TikTok">🎵<span class="dock-label">TikTok</span></a>
-        <a href="#" class="dock-link" title="WhatsApp">💬<span class="dock-label">WhatsApp</span></a>
-        <a href="#" class="dock-link" title="Facebook">👥<span class="dock-label">Facebook</span></a>
-        <a href="#" class="dock-link" title="YouTube">▶️<span class="dock-label">YouTube</span></a>
+        <a href="#" class="dock-link" title="Instagram"><i class="fab fa-instagram"></i><span
+                class="dock-label">Instagram</span></a>
+        <a href="#" class="dock-link" title="TikTok"><i class="fab fa-tiktok"></i><span
+                class="dock-label">TikTok</span></a>
+        <a href="#" class="dock-link" title="WhatsApp"><i class="fab fa-whatsapp"></i><span
+                class="dock-label">WhatsApp</span></a>
+        <a href="#" class="dock-link" title="Facebook"><i class="fab fa-facebook"></i><span
+                class="dock-label">Facebook</span></a>
+        <a href="#" class="dock-link" title="YouTube"><i class="fab fa-youtube"></i><span
+                class="dock-label">YouTube</span></a>
         <div class="dock-line"></div>
     </div>
 
@@ -2330,21 +2346,21 @@
             </div>
             <div class="h-bots">
                 <div class="h-bot">
-                    <div class="h-bot-icon">🎓</div>
+                    <div class="h-bot-icon"><i class="fas fa-graduation-cap"></i></div>
                     <div>
                         <div class="h-bot-label">Levels</div>
                         <div class="h-bot-val">All Welcome</div>
                     </div>
                 </div>
                 <div class="h-bot">
-                    <div class="h-bot-icon">📍</div>
+                    <div class="h-bot-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div>
                         <div class="h-bot-label">Location</div>
                         <div class="h-bot-val">Nairobi CBD</div>
                     </div>
                 </div>
                 <div class="h-bot">
-                    <div class="h-bot-icon">📦</div>
+                    <div class="h-bot-icon"><i class="fas fa-inbox"></i></div>
                     <div>
                         <div class="h-bot-label">Sessions</div>
                         <div class="h-bot-val">Up to 15 pack</div>
@@ -2379,7 +2395,7 @@
                     music, and a community that celebrates movement. Whether you're stepping onto the dance floor for
                     the first time or refining advanced footwork, our classes meet you exactly where you are.</p>
                 <div class="fact-card">
-                    <div class="fi">💃</div>
+                    <div class="fi"><i class="fas fa-user"></i></div>
                     <div>
                         <div class="ft">Partner & Solo Styles</div>
                         <div class="fd">Learn both lead and follow. Our curriculum covers partner work, solo styling,
@@ -2387,7 +2403,7 @@
                     </div>
                 </div>
                 <div class="fact-card">
-                    <div class="fi">🎵</div>
+                    <div class="fi"><i class="fas fa-music"></i></div>
                     <div>
                         <div class="ft">Real Music, Always</div>
                         <div class="fd">KCL's in-house DJ plays authentic Konpa and Caribbean tracks every single
@@ -2395,7 +2411,7 @@
                     </div>
                 </div>
                 <div class="fact-card">
-                    <div class="fi">🌍</div>
+                    <div class="fi"><i class="fas fa-globe"></i></div>
                     <div>
                         <div class="ft">Global Technique, Local Community</div>
                         <div class="fd">Internationally recognised Konpa technique delivered inside Nairobi's most
@@ -2514,7 +2530,7 @@
                     <div class="gi-overlay">
                         <div class="gi-cap">Social Nights</div>
                     </div>
-                    <div class="nc-badge">📷 Live</div>
+                    <div class="nc-badge"><i class="fas fa-camera"></i> Live</div>
                 </div>
             </div>
         </div>
@@ -2522,7 +2538,7 @@
 
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox" onclick="closeLb(event)">
-        <button class="lb-close" onclick="closeLb()">✕ Close</button>
+        <button class="lb-close" onclick="closeLb()"><i class="fas fa-times"></i> Close</button>
         <img id="lbImg" src="" alt="">
     </div>
 
@@ -2601,18 +2617,21 @@
                             style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--ivory-dim);margin-bottom:0.6rem">
                             Accepted Payments</div>
                         <div class="pay-row">
-                            <div class="pb">📱 M-Pesa</div>
-                            <div class="pb">💳 Visa</div>
-                            <div class="pb">💳 Mastercard</div>
+                            <div class="pb"><i class="fas fa-mobile-alt"></i> M-Pesa</div>
+                            <div class="pb"><i class="fas fa-credit-card"></i> Visa</div>
+                            <div class="pb"><i class="fas fa-credit-card"></i> Mastercard</div>
                         </div>
                     </div>
-                    <div class="b-note">📌 <strong>Note:</strong> Classes run Monday, Tuesday, Thursday, Friday,
+                    <div class="b-note"><i class="fas fa-thumbtack"></i> <strong>Note:</strong> Classes run Monday,
+                        Tuesday, Thursday, Friday,
                         Saturday and Sunday. <strong>No classes on Wednesday.</strong></div>
                 </div>
                 <div class="bw">
                     <div class="w-tabs">
-                        <button class="w-tab active" onclick="switchTab(this,'cal')">📅 Pick Date</button>
-                        <button class="w-tab" onclick="switchTab(this,'sl')">🕐 Time Slot</button>
+                        <button class="w-tab active" onclick="switchTab(this,'cal')"><i class="fas fa-calendar"></i>
+                            Pick Date</button>
+                        <button class="w-tab" onclick="switchTab(this,'sl')"><i class="fas fa-clock"></i> Time
+                            Slot</button>
                     </div>
                     <!-- Calendar -->
                     <div id="calV">
@@ -2717,11 +2736,11 @@
                     <div class="ft-tagline">Nairobi's home of Konpa and Caribbean social dance. Real music. Real
                         movement. Real community.</div>
                     <div class="ft-soc">
-                        <a href="#" title="Instagram">📷</a>
-                        <a href="#" title="TikTok">🎵</a>
-                        <a href="#" title="WhatsApp">💬</a>
-                        <a href="#" title="Facebook">👥</a>
-                        <a href="#" title="YouTube">▶️</a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="ft-col">
@@ -2766,20 +2785,20 @@
 
     <!-- TOAST -->
     <div class="toast" id="toast">
-        <span style="font-size:1.2rem">🎉</span>
+        <span style="font-size:1.2rem"><i class="fas fa-party-horn"></i></span>
         <span id="toastMsg">Booking confirmed! Check your phone.</span>
     </div>
 
     <script>
         /* ── TICKER ── */
         const tickerItems = [
-            { icon: '📷', text: 'Follow us on Instagram', link: '#' },
-            { icon: '🎵', text: 'Watch classes on TikTok', link: '#' },
-            { icon: '💬', text: 'WhatsApp to inquire', link: '#' },
-            { icon: '👥', text: 'Join our Facebook community', link: '#' },
-            { icon: '📍', text: 'Nairobi CBD — Classes 6 days a week' },
-            { icon: '🎶', text: 'Live DJ every session — no playlists' },
-            { icon: '🔥', text: 'New Morning Flow classes — 8 AM weekdays', link: '#' },
+            { icon: '<i class="fab fa-instagram"></i>', text: 'Follow us on Instagram', link: '#' },
+            { icon: '<i class="fab fa-tiktok"></i>', text: 'Watch classes on TikTok', link: '#' },
+            { icon: '<i class="fab fa-whatsapp"></i>', text: 'WhatsApp to inquire', link: '#' },
+            { icon: '<i class="fab fa-facebook"></i>', text: 'Join our Facebook community', link: '#' },
+            { icon: '<i class="fas fa-map-marker-alt"></i>', text: 'Nairobi CBD — Classes 6 days a week' },
+            { icon: '<i class="fas fa-music"></i>', text: 'Live DJ every session — no playlists' },
+            { icon: '<i class="fas fa-fire"></i>', text: 'New Morning Flow classes — 8 AM weekdays', link: '#' },
         ];
         const track = document.getElementById('tickerTrack');
         [...tickerItems, ...tickerItems].forEach(it => {
@@ -2792,11 +2811,16 @@
         /* ── MOBILE MENU ── */
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
-            document.getElementById('hamburger').textContent = document.getElementById('mobileMenu').classList.contains('open') ? '✕' : '☰';
+            const hamburger = document.getElementById('hamburger');
+            if (document.getElementById('mobileMenu').classList.contains('open')) {
+                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }
         function closeMenu() {
             document.getElementById('mobileMenu').classList.remove('open');
-            document.getElementById('hamburger').textContent = '☰';
+            document.getElementById('hamburger').innerHTML = '<i class="fas fa-bars"></i>';
         }
 
         /* ── SCROLL ── */
