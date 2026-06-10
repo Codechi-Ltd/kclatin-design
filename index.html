@@ -1,0 +1,2892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KCL — Konpa Dance Classes Nairobi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ── RESET & TOKENS ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --navy: #080A14;
+            --navy-1: #0E1120;
+            --navy-2: #141728;
+            --navy-3: #1C2038;
+            --coral: #FF3060;
+            --coral-dim: #CC2550;
+            --coral-glow: rgba(255, 48, 96, 0.35);
+            --gold: #D4A843;
+            --gold-dim: rgba(212, 168, 67, 0.15);
+            --ivory: #F0EBE0;
+            --ivory-dim: #9A9380;
+            --white: #FFFFFF;
+            --r-sm: 10px;
+            --r-md: 18px;
+            --r-lg: 28px;
+            --r-xl: 40px;
+            --r-pill: 999px;
+            --glow-sm: 0 0 20px rgba(255, 48, 96, 0.2);
+            --glow-md: 0 0 40px rgba(255, 48, 96, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased
+        }
+
+        body {
+            background: var(--navy);
+            color: var(--ivory);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover
+        }
+
+        button,
+        input {
+            font-family: inherit
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--coral);
+            border-radius: 2px
+        }
+
+        /* ══════════════════════════════════════════
+   SOCIAL TICKER — always visible top strip
+══════════════════════════════════════════ */
+        .social-ticker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background: var(--coral);
+            height: 36px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            animation: tickerScroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes tickerScroll {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 2.5rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .ticker-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .ticker-dot {
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            flex-shrink: 0
+        }
+
+        /* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+        nav {
+            position: fixed;
+            top: 36px;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 60px;
+            background: rgba(8, 10, 20, 0.75);
+            backdrop-filter: blur(24px) saturate(1.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: background 0.3s;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.7rem;
+            letter-spacing: 0.14em;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+            margin-bottom: 2px;
+            box-shadow: 0 0 8px var(--coral)
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ivory-dim);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white)
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 0.6rem
+        }
+
+        .nav-social a {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--r-sm);
+            background: rgba(255, 255, 255, 0.06);
+            display: grid;
+            place-items: center;
+            color: var(--ivory-dim);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-social a:hover {
+            background: var(--coral);
+            color: white;
+            box-shadow: var(--glow-sm)
+        }
+
+        .nav-cta {
+            background: var(--coral);
+            color: white;
+            border: none;
+            border-radius: var(--r-pill);
+            padding: 0.55rem 1.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(255, 48, 96, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--coral-dim);
+            transform: translateY(-1px);
+            box-shadow: var(--glow-md)
+        }
+
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ivory);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 96px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 99;
+            background: rgba(8, 10, 20, 0.97);
+            backdrop-filter: blur(30px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .mobile-menu a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 0.1em;
+            color: var(--ivory);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--coral)
+        }
+
+        .mobile-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem
+        }
+
+        .mobile-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--r-md);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: grid;
+            place-items: center;
+            color: var(--ivory);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .mobile-social a:hover {
+            background: var(--coral);
+            border-color: var(--coral)
+        }
+
+        /* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            padding-top: 96px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #rhythmCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-rows: auto auto;
+            gap: 1rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem 2rem 3rem;
+            grid-template-areas: "main thumb" "bots bots";
+        }
+
+        /* HERO MAIN */
+        .h-main {
+            grid-area: main;
+            background: linear-gradient(140deg, #180d1e 0%, #0a0e1c 55%, #0c1624 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--r-xl);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .h-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 70%, rgba(255, 48, 96, 0.2) 0%, transparent 60%);
+        }
+
+        .h-main-img {
+            position: absolute;
+            inset: 0;
+            opacity: 0.18;
+            background: url('https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=900&q=80') center/cover no-repeat;
+            border-radius: inherit;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 48, 96, 0.12);
+            border: 1px solid rgba(255, 48, 96, 0.3);
+            border-radius: var(--r-pill);
+            padding: 0.3rem 0.9rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 1.2rem;
+            width: fit-content;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--coral);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7)
+            }
+        }
+
+        .h-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.8rem, 5.5vw, 6.5rem);
+            line-height: 0.92;
+            letter-spacing: 0.02em;
+            color: var(--white);
+        }
+
+        .h-title .cr {
+            color: var(--coral)
+        }
+
+        .h-title .gl {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+
+        .h-sub {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--ivory-dim);
+            line-height: 1.7;
+            max-width: 380px;
+        }
+
+        .h-actions {
+            display: flex;
+            gap: 0.7rem;
+            margin-top: 1.8rem;
+            flex-wrap: wrap
+        }
+
+        .btn-pr {
+            background: var(--coral);
+            color: white;
+            border: none;
+            border-radius: var(--r-pill);
+            padding: 0.85rem 1.8rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.04em;
+            box-shadow: 0 6px 20px rgba(255, 48, 96, 0.35);
+        }
+
+        .btn-pr:hover {
+            background: var(--coral-dim);
+            transform: translateY(-2px);
+            box-shadow: var(--glow-md)
+        }
+
+        .btn-gh {
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--r-pill);
+            padding: 0.85rem 1.8rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.04em;
+        }
+
+        .btn-gh:hover {
+            border-color: var(--ivory);
+            background: rgba(255, 255, 255, 0.05)
+        }
+
+        /* HERO THUMB stack */
+        .h-thumb {
+            grid-area: thumb;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .h-stat {
+            flex: 1;
+            border-radius: var(--r-lg);
+            padding: 1.6rem;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .h-stat:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 48, 96, 0.3)
+        }
+
+        .h-stat.coral {
+            background: var(--coral);
+            border-color: transparent
+        }
+
+        .h-stat.dark {
+            background: var(--navy-2)
+        }
+
+        .h-stat.gold {
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.12), rgba(212, 168, 67, 0.05));
+            border-color: rgba(212, 168, 67, 0.2)
+        }
+
+        .stat-big {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1;
+            color: white
+        }
+
+        .stat-lbl {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.2rem
+        }
+
+        .stat-val {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin-top: 0.2rem
+        }
+
+        .dj-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem
+        }
+
+        .dj-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 1.8s ease-in-out infinite
+        }
+
+        .dj-name {
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase
+        }
+
+        .dj-desc {
+            font-size: 0.82rem;
+            color: var(--ivory-dim);
+            line-height: 1.55
+        }
+
+        /* HERO BOTTOM ROW */
+        .h-bots {
+            grid-area: bots;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .h-bot {
+            flex: 1;
+            background: var(--navy-2);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--r-lg);
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .h-bot:hover {
+            transform: translateY(-2px)
+        }
+
+        .h-bot-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0
+        }
+
+        .h-bot-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ivory-dim)
+        }
+
+        .h-bot-val {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-top: 0.15rem
+        }
+
+        .day-pills {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            margin-top: 0.4rem
+        }
+
+        .dp {
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--r-pill);
+            font-size: 0.68rem;
+            font-weight: 600;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.06em;
+        }
+
+        .dp.on {
+            background: var(--coral);
+            color: white
+        }
+
+        .dp.off {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--ivory-dim);
+            text-decoration: line-through
+        }
+
+        /* ══════════════════════════════════════════
+   SECTION SHELLS
+══════════════════════════════════════════ */
+        .sec {
+            padding: 7rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .sec-full {
+            padding: 7rem 0
+        }
+
+        .sec-lbl {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--coral);
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .sec-lbl::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 48, 96, 0.25);
+            max-width: 80px
+        }
+
+        .sec-h {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+            letter-spacing: 0.04em;
+            color: var(--white);
+            line-height: 1.05;
+        }
+
+        .sec-h .dim {
+            color: var(--ivory-dim)
+        }
+
+        /* ══════════════════════════════════════════
+   FLOATING SOCIAL DOCK (left side desktop)
+══════════════════════════════════════════ */
+        .social-dock {
+            position: fixed;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .dock-line {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.2rem auto
+        }
+
+        .dock-link {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--r-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            place-items: center;
+            color: var(--ivory-dim);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .dock-link:hover {
+            background: var(--coral);
+            border-color: var(--coral);
+            color: white;
+            transform: scale(1.15);
+            box-shadow: var(--glow-sm)
+        }
+
+        .dock-label {
+            position: absolute;
+            left: calc(100% + 10px);
+            background: var(--navy-3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--r-sm);
+            padding: 0.25rem 0.6rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ivory);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.2s;
+            transform: translateX(-6px);
+        }
+
+        .dock-link:hover .dock-label {
+            opacity: 1;
+            transform: translateX(0)
+        }
+
+        /* ══════════════════════════════════════════
+   ABOUT / KONPA
+══════════════════════════════════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            align-items: start
+        }
+
+        .about-img-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .img-card {
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.06)
+        }
+
+        .img-card img {
+            height: 260px
+        }
+
+        .img-card.tall img {
+            height: 380px
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(8, 10, 20, 0.8));
+            padding: 1.5rem 1.2rem 1rem;
+        }
+
+        .img-overlay span {
+            font-size: 0.75rem;
+            color: var(--ivory-dim);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--ivory-dim);
+            margin-bottom: 0.5rem
+        }
+
+        .about-text strong {
+            color: var(--ivory)
+        }
+
+        .fact-card {
+            background: var(--navy-2);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--r-md);
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: border-color 0.2s, transform 0.25s;
+        }
+
+        .fact-card:hover {
+            border-color: rgba(255, 48, 96, 0.25);
+            transform: translateX(4px)
+        }
+
+        .fi {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem
+        }
+
+        .ft {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--ivory);
+            margin-bottom: 0.25rem
+        }
+
+        .fd {
+            font-size: 0.82rem;
+            color: var(--ivory-dim);
+            line-height: 1.55
+        }
+
+        /* ══════════════════════════════════════════
+   CLASSES MASONRY
+══════════════════════════════════════════ */
+        .classes-wrap {
+            padding: 7rem 2rem;
+            background: var(--navy-1);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04)
+        }
+
+        .classes-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .masonry {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 80px);
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .cl {
+            background: var(--navy-2);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--r-lg);
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .cl:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 48, 96, 0.3);
+            box-shadow: var(--glow-sm)
+        }
+
+        .cl:hover .cl-book {
+            opacity: 1;
+            transform: translate(0, 0)
+        }
+
+        .cl.c1 {
+            grid-column: 1/3;
+            grid-row: 1/4;
+            min-height: 300px
+        }
+
+        .cl.c2 {
+            grid-column: 3;
+            grid-row: 1/3
+        }
+
+        .cl.c3 {
+            grid-column: 3;
+            grid-row: 3/5
+        }
+
+        .cl.c4 {
+            grid-column: 1;
+            grid-row: 4/5
+        }
+
+        .cl.c5 {
+            grid-column: 2;
+            grid-row: 4/5
+        }
+
+        .cl-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.12;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.3s, transform 0.5s
+        }
+
+        .cl:hover .cl-bg {
+            opacity: 0.22;
+            transform: scale(1.04)
+        }
+
+        .cl-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 30%, rgba(8, 10, 20, 0.9))
+        }
+
+        .cl-content {
+            position: relative;
+            z-index: 1
+        }
+
+        .cl-lvl {
+            display: inline-block;
+            padding: 0.22rem 0.65rem;
+            border-radius: var(--r-pill);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
+        .lv-b {
+            background: rgba(100, 220, 150, 0.15);
+            color: #64DC96
+        }
+
+        .lv-i {
+            background: rgba(255, 180, 60, 0.15);
+            color: #FFB43C
+        }
+
+        .lv-s {
+            background: rgba(255, 48, 96, 0.15);
+            color: var(--coral)
+        }
+
+        .lv-a {
+            background: var(--gold-dim);
+            color: var(--gold)
+        }
+
+        .cl-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.06em;
+            color: white;
+            line-height: 1.05;
+            margin-bottom: 0.5rem
+        }
+
+        .cl.c1 .cl-name {
+            font-size: 2.8rem
+        }
+
+        .cl-desc {
+            font-size: 0.82rem;
+            color: var(--ivory-dim);
+            line-height: 1.6;
+            margin-bottom: 0.8rem
+        }
+
+        .cl-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem
+        }
+
+        .mt {
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: var(--r-pill);
+            padding: 0.22rem 0.6rem;
+            font-size: 0.7rem;
+            color: var(--ivory-dim);
+            font-family: 'DM Mono', monospace;
+        }
+
+        .cl-book {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            z-index: 2;
+            background: var(--coral);
+            color: white;
+            border: none;
+            border-radius: var(--r-pill);
+            padding: 0.4rem 1rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transform: translate(4px, -4px);
+            transition: opacity 0.25s, transform 0.25s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cl-glyph {
+            position: absolute;
+            right: -1rem;
+            bottom: -2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 10rem;
+            color: rgba(255, 255, 255, 0.025);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        /* ══════════════════════════════════════════
+   GALLERY
+══════════════════════════════════════════ */
+        .gallery-wrap {
+            padding: 7rem 2rem
+        }
+
+        .gallery-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 220px 220px;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .gi {
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.35s, box-shadow 0.35s;
+        }
+
+        .gi:hover {
+            transform: scale(1.02);
+            z-index: 2;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5)
+        }
+
+        .gi img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s
+        }
+
+        .gi:hover img {
+            transform: scale(1.08)
+        }
+
+        .gi-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 40%, rgba(8, 10, 20, 0.85));
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .gi:hover .gi-overlay {
+            opacity: 1
+        }
+
+        .gi-cap {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.06em;
+            text-transform: uppercase
+        }
+
+        .gi.g1 {
+            grid-column: 1/3;
+            grid-row: 1/2
+        }
+
+        .gi.g2 {
+            grid-column: 3;
+            grid-row: 1/2
+        }
+
+        .gi.g3 {
+            grid-column: 4;
+            grid-row: 1/3
+        }
+
+        .gi.g4 {
+            grid-column: 1;
+            grid-row: 2/3
+        }
+
+        .gi.g5 {
+            grid-column: 2/4;
+            grid-row: 2/3
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: rgba(8, 10, 20, 0.95);
+            display: none;
+            place-items: center;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+        }
+
+        .lightbox.open {
+            display: grid
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: var(--r-lg);
+            object-fit: contain;
+            cursor: default
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: var(--r-pill);
+            padding: 0.5rem 1.1rem;
+            color: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* ══════════════════════════════════════════
+   NEWS
+══════════════════════════════════════════ */
+        .news-wrap {
+            padding: 7rem 2rem;
+            background: var(--navy-1);
+            border-top: 1px solid rgba(255, 255, 255, 0.04)
+        }
+
+        .news-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            align-items: start;
+        }
+
+        .nc {
+            background: var(--navy-2);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .nc:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 48, 96, 0.25)
+        }
+
+        .nc-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative
+        }
+
+        .nc.featured .nc-img {
+            height: 260px
+        }
+
+        .nc-img img {
+            height: 100%;
+            transition: transform 0.5s
+        }
+
+        .nc:hover .nc-img img {
+            transform: scale(1.06)
+        }
+
+        .nc-body {
+            padding: 1.4rem
+        }
+
+        .nc-cat {
+            display: inline-block;
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 0.6rem;
+        }
+
+        .nc-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.4;
+            margin-bottom: 0.5rem
+        }
+
+        .nc.featured .nc-title {
+            font-size: 1.2rem
+        }
+
+        .nc-excerpt {
+            font-size: 0.82rem;
+            color: var(--ivory-dim);
+            line-height: 1.65;
+            margin-bottom: 0.8rem
+        }
+
+        .nc-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.72rem;
+            color: var(--ivory-dim)
+        }
+
+        .nc-dot {
+            width: 3px;
+            height: 3px;
+            background: var(--ivory-dim);
+            border-radius: 50%
+        }
+
+        .nc-badge {
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            background: var(--coral);
+            color: white;
+            border-radius: var(--r-pill);
+            padding: 0.2rem 0.65rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ══════════════════════════════════════════
+   BOOKING
+══════════════════════════════════════════ */
+        .booking-wrap {
+            padding: 7rem 2rem
+        }
+
+        .booking-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start
+        }
+
+        .b-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: white;
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem
+        }
+
+        .b-info p {
+            font-size: 0.9rem;
+            color: var(--ivory-dim);
+            line-height: 1.75;
+            margin-bottom: 1.5rem
+        }
+
+        .cap-bar {
+            margin-bottom: 1.5rem
+        }
+
+        .cap-lbl {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ivory-dim);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between
+        }
+
+        .bar-t {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            overflow: hidden
+        }
+
+        .bar-f {
+            height: 100%;
+            background: var(--coral);
+            width: 40%;
+            border-radius: 3px;
+            transition: width 1.2s ease;
+            box-shadow: 0 0 8px rgba(255, 48, 96, 0.5)
+        }
+
+        .pay-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.7rem
+        }
+
+        .pb {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--r-sm);
+            padding: 0.5rem 0.9rem;
+            font-size: 0.78rem;
+            color: var(--ivory);
+        }
+
+        .b-note {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 48, 96, 0.05);
+            border: 1px solid rgba(255, 48, 96, 0.18);
+            border-radius: var(--r-md);
+            font-size: 0.82rem;
+            color: var(--ivory-dim);
+            line-height: 1.65;
+        }
+
+        .b-note strong {
+            color: var(--ivory)
+        }
+
+        /* Widget */
+        .bw {
+            background: var(--navy-2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--r-xl);
+            padding: 2rem;
+        }
+
+        .w-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--r-pill);
+            padding: 0.25rem;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .w-tab {
+            flex: 1;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--ivory-dim);
+            cursor: pointer;
+            border-radius: var(--r-pill);
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .w-tab.active {
+            background: var(--coral);
+            color: white;
+            box-shadow: var(--glow-sm)
+        }
+
+        /* Calendar */
+        .ch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem
+        }
+
+        .cm {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.1em;
+            color: white
+        }
+
+        .cn {
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            border-radius: var(--r-sm);
+            padding: 0.3rem 0.65rem;
+            color: var(--ivory);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cn:hover {
+            background: rgba(255, 255, 255, 0.12)
+        }
+
+        .cdh {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            margin-bottom: 4px
+        }
+
+        .cdn {
+            text-align: center;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ivory-dim);
+            padding: 0.3rem 0;
+            font-family: 'DM Mono', monospace
+        }
+
+        .cdg {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px
+        }
+
+        .cd {
+            text-align: center;
+            padding: 0.55rem 0;
+            font-size: 0.8rem;
+            border-radius: var(--r-sm);
+            cursor: pointer;
+            transition: all 0.15s;
+            color: var(--ivory-dim);
+        }
+
+        .cd:hover:not(.dis):not(.emp) {
+            background: rgba(255, 48, 96, 0.15);
+            color: var(--coral)
+        }
+
+        .cd.sel {
+            background: var(--coral);
+            color: white;
+            font-weight: 600;
+            box-shadow: var(--glow-sm)
+        }
+
+        .cd.tod {
+            border: 1px solid rgba(255, 48, 96, 0.5);
+            color: var(--coral)
+        }
+
+        .cd.dis {
+            color: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            position: relative
+        }
+
+        .cd.dis span {
+            visibility: hidden
+        }
+
+        .cd.dis::after {
+            content: '—';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.55rem;
+            color: rgba(255, 48, 96, 0.25)
+        }
+
+        .cd.emp {
+            cursor: default
+        }
+
+        .sel-display {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--ivory-dim);
+            min-height: 1.2rem;
+            margin-top: 0.8rem
+        }
+
+        /* Slots */
+        .ts-hdr {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ivory-dim);
+            margin: 1rem 0 0.6rem
+        }
+
+        .tsg {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem
+        }
+
+        .ts {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--r-md);
+            padding: 0.65rem 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .ts:hover:not(.tf) {
+            border-color: rgba(255, 48, 96, 0.4);
+            background: rgba(255, 48, 96, 0.06)
+        }
+
+        .ts.tsel {
+            border-color: var(--coral);
+            background: rgba(255, 48, 96, 0.1)
+        }
+
+        .ts.tf {
+            opacity: 0.35;
+            cursor: not-allowed
+        }
+
+        .ts-time {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ivory);
+            font-weight: 500
+        }
+
+        .ts-sp {
+            font-size: 0.68rem;
+            color: var(--ivory-dim);
+            margin-top: 0.15rem
+        }
+
+        .ts-sp.low {
+            color: #FFB43C
+        }
+
+        /* Counter */
+        .sc label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ivory-dim);
+            display: block;
+            margin: 1.2rem 0 0.5rem
+        }
+
+        .cr-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem
+        }
+
+        .crbtn {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: var(--r-sm);
+            width: 34px;
+            height: 34px;
+            color: var(--ivory);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .crbtn:hover {
+            background: rgba(255, 48, 96, 0.25)
+        }
+
+        .crnum {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: white;
+            min-width: 2.5rem;
+            text-align: center
+        }
+
+        .crmax {
+            font-size: 0.75rem;
+            color: var(--ivory-dim)
+        }
+
+        .bk-btn {
+            width: 100%;
+            background: var(--coral);
+            color: white;
+            border: none;
+            border-radius: var(--r-md);
+            padding: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.2s;
+            letter-spacing: 0.04em;
+            box-shadow: 0 6px 20px rgba(255, 48, 96, 0.3);
+        }
+
+        .bk-btn:hover {
+            background: var(--coral-dim);
+            transform: translateY(-1px);
+            box-shadow: var(--glow-md)
+        }
+
+        .bk-note {
+            text-align: center;
+            font-size: 0.72rem;
+            color: var(--ivory-dim);
+            margin-top: 0.5rem
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--coral);
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+            padding: 0;
+        }
+
+        /* ══════════════════════════════════════════
+   PRICING
+══════════════════════════════════════════ */
+        .pricing-wrap {
+            padding: 7rem 2rem;
+            background: var(--navy-1);
+            border-top: 1px solid rgba(255, 255, 255, 0.04)
+        }
+
+        .pricing-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .pkg-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2.5rem;
+            align-items: end
+        }
+
+        .pk {
+            background: var(--navy-2);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--r-xl);
+            padding: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .pk:hover {
+            transform: translateY(-5px)
+        }
+
+        .pk.feat {
+            border-color: rgba(255, 48, 96, 0.4);
+            background: linear-gradient(160deg, rgba(255, 48, 96, 0.08), var(--navy-2));
+            padding-top: 3.5rem;
+        }
+
+        .pk-badge {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: var(--coral);
+            color: white;
+            border-radius: var(--r-pill);
+            padding: 0.2rem 0.8rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .pk-name {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ivory-dim);
+            margin-bottom: 0.5rem
+        }
+
+        .pk-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: white;
+            line-height: 1
+        }
+
+        .pk-price sup {
+            font-size: 1.3rem;
+            vertical-align: super;
+            color: var(--ivory-dim)
+        }
+
+        .pk-sess {
+            font-size: 0.85rem;
+            color: var(--ivory-dim);
+            margin: 0.35rem 0 1.2rem
+        }
+
+        .pk-sess strong {
+            color: var(--coral)
+        }
+
+        .pk-feats {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-bottom: 1.8rem
+        }
+
+        .pk-feats li {
+            font-size: 0.83rem;
+            color: var(--ivory-dim);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem
+        }
+
+        .pk-feats li::before {
+            content: '✓';
+            color: var(--coral);
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0
+        }
+
+        .pk-btn {
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: var(--r-pill);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.04em;
+        }
+
+        .pk-pr {
+            background: var(--coral);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 20px rgba(255, 48, 96, 0.3)
+        }
+
+        .pk-pr:hover {
+            background: var(--coral-dim);
+            box-shadow: var(--glow-md);
+            transform: translateY(-1px)
+        }
+
+        .pk-gh {
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid rgba(255, 255, 255, 0.2)
+        }
+
+        .pk-gh:hover {
+            border-color: var(--ivory);
+            background: rgba(255, 255, 255, 0.04)
+        }
+
+        .pk-glyph {
+            position: absolute;
+            right: -1.5rem;
+            bottom: -2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 9rem;
+            color: rgba(255, 255, 255, 0.025);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        /* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 4rem 2rem 2rem;
+            max-width: none;
+        }
+
+        .ft-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .ft-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem
+        }
+
+        .ft-brand {}
+
+        .ft-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.12em;
+            color: white;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem
+        }
+
+        .ft-logo .fdot {
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--coral)
+        }
+
+        .ft-tagline {
+            font-size: 0.85rem;
+            color: var(--ivory-dim);
+            line-height: 1.7;
+            margin-bottom: 1.2rem
+        }
+
+        .ft-soc {
+            display: flex;
+            gap: 0.5rem
+        }
+
+        .ft-soc a {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--r-md);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            place-items: center;
+            color: var(--ivory-dim);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .ft-soc a:hover {
+            background: var(--coral);
+            border-color: var(--coral);
+            color: white;
+            box-shadow: var(--glow-sm)
+        }
+
+        .ft-col h4 {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--ivory);
+            margin-bottom: 1rem
+        }
+
+        .ft-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem
+        }
+
+        .ft-col ul a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: var(--ivory-dim);
+            transition: color 0.2s
+        }
+
+        .ft-col ul a:hover {
+            color: var(--coral)
+        }
+
+        .ft-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 1.5rem
+        }
+
+        .ft-copy {
+            font-size: 0.78rem;
+            color: var(--ivory-dim)
+        }
+
+        /* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--navy-3);
+            border: 1px solid rgba(255, 48, 96, 0.3);
+            border-radius: var(--r-lg);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--ivory);
+            font-size: 0.88rem;
+            z-index: 999;
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 92vw;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .toast.up {
+            transform: translateX(-50%) translateY(0)
+        }
+
+        /* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+        @media(max-width:1024px) {
+            .social-dock {
+                display: none
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .ft-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem
+            }
+        }
+
+        @media(max-width:768px) {
+            body {
+                padding-top: 0
+            }
+
+            nav {
+                padding: 0 1rem;
+                height: 54px;
+                top: 36px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .nav-right .nav-social {
+                display: none
+            }
+
+            .nav-hamburger {
+                display: block
+            }
+
+            .hero {
+                min-height: auto;
+                padding-bottom: 2rem
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                grid-template-areas: "main" "thumb" "bots";
+                padding: 1rem;
+            }
+
+            .h-thumb {
+                flex-direction: row
+            }
+
+            .h-stat {
+                min-height: 120px
+            }
+
+            .h-bots {
+                flex-direction: column
+            }
+
+            .masonry {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .cl.c1 {
+                grid-column: 1/3;
+                grid-row: auto
+            }
+
+            .cl.c2,
+            .cl.c3,
+            .cl.c4,
+            .cl.c5 {
+                grid-column: auto;
+                grid-row: auto
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 180px 180px 180px;
+            }
+
+            .gi.g1 {
+                grid-column: 1/3;
+                grid-row: 1
+            }
+
+            .gi.g2 {
+                grid-column: 1;
+                grid-row: 2
+            }
+
+            .gi.g3 {
+                grid-column: 2;
+                grid-row: 2/4
+            }
+
+            .gi.g4 {
+                grid-column: 1;
+                grid-row: 3
+            }
+
+            .gi.g5 {
+                grid-column: 1/3;
+                grid-row: auto
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr
+            }
+
+            .booking-grid {
+                grid-template-columns: 1fr
+            }
+
+            .pkg-grid {
+                grid-template-columns: 1fr
+            }
+
+            .ft-top {
+                grid-template-columns: 1fr;
+                gap: 2rem
+            }
+
+            .sec,
+            .gallery-wrap,
+            .classes-wrap,
+            .news-wrap,
+            .booking-wrap,
+            .pricing-wrap {
+                padding: 4rem 1rem
+            }
+        }
+
+        @media(max-width:480px) {
+            .social-ticker {
+                display: none
+            }
+
+            nav {
+                top: 0
+            }
+
+            .mobile-menu {
+                top: 54px
+            }
+
+            .hero {
+                padding-top: 54px
+            }
+
+            .h-title {
+                font-size: 3rem
+            }
+
+            .masonry {
+                grid-template-columns: 1fr
+            }
+
+            .cl.c1,
+            .cl.c2,
+            .cl.c3,
+            .cl.c4,
+            .cl.c5 {
+                grid-column: 1
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto
+            }
+
+            .gi.g1,
+            .gi.g2,
+            .gi.g3,
+            .gi.g4,
+            .gi.g5 {
+                grid-column: 1;
+                grid-row: auto
+            }
+
+            .gi img,
+            .gi {
+                height: 200px
+            }
+
+            .h-thumb {
+                flex-direction: column
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr
+            }
+
+            .tsg {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .bw {
+                padding: 1.2rem
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                transition: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SOCIAL TICKER -->
+    <div class="social-ticker" aria-label="Social media links">
+        <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav id="mainNav">
+        <a href="#" class="nav-logo"><span class="logo-dot"></span>KCL Studio</a>
+        <ul class="nav-links">
+            <li><a href="#about">Konpa</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="nav-social">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="TikTok">🎵</a>
+                <a href="#" title="WhatsApp">💬</a>
+                <a href="#" title="Facebook">👥</a>
+            </div>
+            <button class="nav-cta" onclick="scrollTo('booking')">Book Now</button>
+            <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="closeMenu()">Konpa</a>
+        <a href="#classes" onclick="closeMenu()">Classes</a>
+        <a href="#gallery" onclick="closeMenu()">Gallery</a>
+        <a href="#news" onclick="closeMenu()">News</a>
+        <a href="#booking" onclick="closeMenu()">Book</a>
+        <a href="#pricing" onclick="closeMenu()">Pricing</a>
+        <div class="mobile-social">
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="TikTok">🎵</a>
+            <a href="#" title="WhatsApp">💬</a>
+            <a href="#" title="Facebook">👥</a>
+        </div>
+    </div>
+
+    <!-- FLOATING SOCIAL DOCK -->
+    <div class="social-dock" aria-label="Social links">
+        <div class="dock-line"></div>
+        <a href="#" class="dock-link" title="Instagram">📷<span class="dock-label">Instagram</span></a>
+        <a href="#" class="dock-link" title="TikTok">🎵<span class="dock-label">TikTok</span></a>
+        <a href="#" class="dock-link" title="WhatsApp">💬<span class="dock-label">WhatsApp</span></a>
+        <a href="#" class="dock-link" title="Facebook">👥<span class="dock-label">Facebook</span></a>
+        <a href="#" class="dock-link" title="YouTube">▶️<span class="dock-label">YouTube</span></a>
+        <div class="dock-line"></div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <canvas id="rhythmCanvas"></canvas>
+        <div class="hero-inner">
+            <div class="h-main">
+                <div class="h-main-img"></div>
+                <div class="hero-tag">Nairobi's Caribbean Dance Studio</div>
+                <h1 class="h-title">FEEL<br><span class="cr">THE</span><br><span class="gl">KONPA</span></h1>
+                <p class="h-sub">Authentic Konpa and Caribbean dance classes with a live in-house DJ. Intimate groups,
+                    expert instructors, pure energy.</p>
+                <div class="h-actions">
+                    <button class="btn-pr" onclick="scrollTo('booking')">Book a Session</button>
+                    <button class="btn-gh" onclick="scrollTo('classes')">View Classes</button>
+                </div>
+            </div>
+            <div class="h-thumb">
+                <div class="h-stat coral">
+                    <div class="stat-big">15</div>
+                    <div class="stat-lbl">Max per class</div>
+                    <div class="stat-val">Intimate groups only</div>
+                </div>
+                <div class="h-stat dark">
+                    <div class="dj-line">
+                        <div class="dj-dot"></div>
+                        <div class="dj-name">Live DJ</div>
+                    </div>
+                    <div class="dj-desc">Our resident DJ plays authentic Konpa every session. No playlists — pure sound.
+                    </div>
+                </div>
+                <div class="h-stat gold">
+                    <div
+                        style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:0.5rem;font-weight:600">
+                        Schedule</div>
+                    <div class="day-pills">
+                        <span class="dp on">Mon</span><span class="dp on">Tue</span><span class="dp off">Wed</span>
+                        <span class="dp on">Thu</span><span class="dp on">Fri</span><span class="dp on">Sat</span><span
+                            class="dp on">Sun</span>
+                    </div>
+                </div>
+            </div>
+            <div class="h-bots">
+                <div class="h-bot">
+                    <div class="h-bot-icon">🎓</div>
+                    <div>
+                        <div class="h-bot-label">Levels</div>
+                        <div class="h-bot-val">All Welcome</div>
+                    </div>
+                </div>
+                <div class="h-bot">
+                    <div class="h-bot-icon">📍</div>
+                    <div>
+                        <div class="h-bot-label">Location</div>
+                        <div class="h-bot-val">Nairobi CBD</div>
+                    </div>
+                </div>
+                <div class="h-bot">
+                    <div class="h-bot-icon">📦</div>
+                    <div>
+                        <div class="h-bot-label">Sessions</div>
+                        <div class="h-bot-val">Up to 15 pack</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+        <div class="sec-lbl">What is Konpa?</div>
+        <h2 class="sec-h">Caribbean Roots,<br><span class="dim">Nairobi Spirit</span></h2>
+        <div class="about-grid">
+            <div class="about-img-stack">
+                <div class="img-card tall">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=700&q=80"
+                        alt="Konpa couple dancing" loading="lazy">
+                    <div class="img-overlay"><span>Partner Work & Connection</span></div>
+                </div>
+                <div class="img-card">
+                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=700&q=80" alt="Dance class"
+                        loading="lazy">
+                    <div class="img-overlay"><span>Live DJ Sessions</span></div>
+                </div>
+            </div>
+            <div class="about-content">
+                <p class="about-text"><strong>Konpa</strong> (also Compas or Kompa) is a modern méringue rhythm born in
+                    Haiti in the 1950s. It weaves together African polyrhythm, Cuban son, and French Caribbean musical
+                    tradition into one of the world's most sensual partner dances.</p>
+                <p class="about-text">At KCL Studio, we bring that tradition to Nairobi — authentic teaching, real
+                    music, and a community that celebrates movement. Whether you're stepping onto the dance floor for
+                    the first time or refining advanced footwork, our classes meet you exactly where you are.</p>
+                <div class="fact-card">
+                    <div class="fi">💃</div>
+                    <div>
+                        <div class="ft">Partner & Solo Styles</div>
+                        <div class="fd">Learn both lead and follow. Our curriculum covers partner work, solo styling,
+                            footwork, and musicality training.</div>
+                    </div>
+                </div>
+                <div class="fact-card">
+                    <div class="fi">🎵</div>
+                    <div>
+                        <div class="ft">Real Music, Always</div>
+                        <div class="fd">KCL's in-house DJ plays authentic Konpa and Caribbean tracks every single
+                            session — you learn to dance to the real sound.</div>
+                    </div>
+                </div>
+                <div class="fact-card">
+                    <div class="fi">🌍</div>
+                    <div>
+                        <div class="ft">Global Technique, Local Community</div>
+                        <div class="fd">Internationally recognised Konpa technique delivered inside Nairobi's most
+                            vibrant social dance community.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASSES -->
+    <div class="classes-wrap" id="classes">
+        <div class="classes-inner">
+            <div class="sec-lbl">What We Offer</div>
+            <h2 class="sec-h">Find Your Class</h2>
+            <div class="masonry">
+                <div class="cl c1" onclick="scrollTo('booking')">
+                    <div class="cl-bg"
+                        style="background-image:url('https://images.unsplash.com/photo-1545959570-a94084071b5d?w=900&q=80')">
+                    </div>
+                    <div class="cl-overlay"></div>
+                    <div class="cl-glyph">K</div>
+                    <div class="cl-content">
+                        <span class="cl-lvl lv-b">Beginner</span>
+                        <div class="cl-name">Konpa Foundations</div>
+                        <div class="cl-desc">Zero experience needed. Basic step, connection, and the Konpa pulse —
+                            you'll be dancing by the end of session one.</div>
+                        <div class="cl-meta"><span class="mt">Mon / Thu</span><span class="mt">6:00 PM</span><span
+                                class="mt">75 min</span></div>
+                    </div>
+                    <button class="cl-book">Book →</button>
+                </div>
+                <div class="cl c2" onclick="scrollTo('booking')">
+                    <div class="cl-bg"
+                        style="background-image:url('https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80')">
+                    </div>
+                    <div class="cl-overlay"></div>
+                    <div class="cl-glyph">S</div>
+                    <div class="cl-content">
+                        <span class="cl-lvl lv-i">Intermediate</span>
+                        <div class="cl-name">Konpa Styling</div>
+                        <div class="cl-desc">Deepen musicality, body movement, and partner communication.</div>
+                        <div class="cl-meta"><span class="mt">Tue / Fri</span><span class="mt">7:30 PM</span></div>
+                    </div>
+                    <button class="cl-book">Book →</button>
+                </div>
+                <div class="cl c3" onclick="scrollTo('booking')">
+                    <div class="cl-bg"
+                        style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80')">
+                    </div>
+                    <div class="cl-overlay"></div>
+                    <div class="cl-glyph">♪</div>
+                    <div class="cl-content">
+                        <span class="cl-lvl lv-s">Social Night</span>
+                        <div class="cl-name">Konpa Social</div>
+                        <div class="cl-desc">Open floor with live DJ. Community vibes, free practice.</div>
+                        <div class="cl-meta"><span class="mt">Saturday</span><span class="mt">8:00 PM</span></div>
+                    </div>
+                    <button class="cl-book">Book →</button>
+                </div>
+                <div class="cl c4" onclick="scrollTo('booking')">
+                    <div class="cl-content">
+                        <span class="cl-lvl lv-a">All Levels</span>
+                        <div class="cl-name">Weekend Intensive</div>
+                        <div class="cl-meta"><span class="mt">Sunday</span><span class="mt">3:00 PM</span></div>
+                    </div>
+                    <button class="cl-book">Book →</button>
+                </div>
+                <div class="cl c5" onclick="scrollTo('booking')">
+                    <div class="cl-content">
+                        <span class="cl-lvl lv-b">Beginner</span>
+                        <div class="cl-name">Morning Flow</div>
+                        <div class="cl-meta"><span class="mt">Mon-Fri</span><span class="mt">8:00 AM</span></div>
+                    </div>
+                    <button class="cl-book">Book →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-wrap" id="gallery">
+        <div class="gallery-inner">
+            <div class="sec-lbl">Studio Life</div>
+            <h2 class="sec-h">Inside <span class="dim">KCL</span></h2>
+            <div class="gallery-grid">
+                <div class="gi g1" onclick="openLb(this)">
+                    <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=900&q=80"
+                        alt="Dance floor energy">
+                    <div class="gi-overlay">
+                        <div class="gi-cap">The Floor</div>
+                    </div>
+                </div>
+                <div class="gi g2" onclick="openLb(this)">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&q=80"
+                        alt="Partner dancing">
+                    <div class="gi-overlay">
+                        <div class="gi-cap">Partner Work</div>
+                    </div>
+                </div>
+                <div class="gi g3" onclick="openLb(this)">
+                    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=700&q=80" alt="DJ booth">
+                    <div class="gi-overlay">
+                        <div class="gi-cap">Live DJ Sessions</div>
+                    </div>
+                </div>
+                <div class="gi g4" onclick="openLb(this)">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
+                        alt="Group class">
+                    <div class="gi-overlay">
+                        <div class="gi-cap">Group Classes</div>
+                    </div>
+                </div>
+                <div class="gi g5" onclick="openLb(this)">
+                    <img src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=900&q=80" alt="Social night">
+                    <div class="gi-overlay">
+                        <div class="gi-cap">Social Nights</div>
+                    </div>
+                    <div class="nc-badge">📷 Live</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLb(event)">
+        <button class="lb-close" onclick="closeLb()">✕ Close</button>
+        <img id="lbImg" src="" alt="">
+    </div>
+
+    <!-- NEWS -->
+    <div class="news-wrap" id="news">
+        <div class="news-inner">
+            <div class="sec-lbl">Latest from KCL</div>
+            <h2 class="sec-h">News & <span class="dim">Updates</span></h2>
+            <div class="news-grid">
+                <div class="nc featured">
+                    <div class="nc-img">
+                        <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=700&q=80"
+                            alt="Konpa festival" loading="lazy">
+                        <div class="nc-badge">New</div>
+                    </div>
+                    <div class="nc-body">
+                        <div class="nc-cat">Event</div>
+                        <div class="nc-title">KCL's First Annual Nairobi Konpa Festival — Register Now</div>
+                        <div class="nc-excerpt">We're bringing the Caribbean to Nairobi in a big way. An all-day
+                            celebration of Konpa, zouk, and social dance with international guest instructors and our
+                            resident DJ.</div>
+                        <div class="nc-meta"><span>July 19, 2026</span>
+                            <div class="nc-dot"></div><span>3 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nc">
+                    <div class="nc-img"><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=500&q=80"
+                            alt="New classes" loading="lazy"></div>
+                    <div class="nc-body">
+                        <div class="nc-cat">Classes</div>
+                        <div class="nc-title">Morning Flow Classes Now Open — Beat the Nairobi Rush</div>
+                        <div class="nc-excerpt">Brand new 8 AM weekday classes are here. Start your day with rhythm.
+                        </div>
+                        <div class="nc-meta"><span>June 5, 2026</span>
+                            <div class="nc-dot"></div><span>2 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nc">
+                    <div class="nc-img"><img
+                            src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=500&q=80"
+                            alt="Community" loading="lazy"></div>
+                    <div class="nc-body">
+                        <div class="nc-cat">Community</div>
+                        <div class="nc-title">Over 200 Dancers Have Joined KCL This Year</div>
+                        <div class="nc-excerpt">From total beginners to advanced stylers — Nairobi's social dance scene
+                            is growing fast.</div>
+                        <div class="nc-meta"><span>May 22, 2026</span>
+                            <div class="nc-dot"></div><span>2 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING -->
+    <div class="booking-wrap" id="booking">
+        <div class="booking-inner">
+            <div class="sec-lbl">Reserve Your Spot</div>
+            <h2 class="sec-h">Book a <span class="dim">Session</span></h2>
+            <div class="booking-grid">
+                <div class="b-info">
+                    <h3>How it Works</h3>
+                    <p>Pick a date, choose a timeslot, and decide how many sessions you want (up to 15). Pay securely
+                        with M-Pesa or card — your spot is held instantly.</p>
+                    <div class="cap-bar">
+                        <div class="cap-lbl"><span>Class Capacity</span><span>6 / 15 spots taken</span></div>
+                        <div class="bar-t">
+                            <div class="bar-f" id="barFill"></div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem">
+                        <div
+                            style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--ivory-dim);margin-bottom:0.6rem">
+                            Accepted Payments</div>
+                        <div class="pay-row">
+                            <div class="pb">📱 M-Pesa</div>
+                            <div class="pb">💳 Visa</div>
+                            <div class="pb">💳 Mastercard</div>
+                        </div>
+                    </div>
+                    <div class="b-note">📌 <strong>Note:</strong> Classes run Monday, Tuesday, Thursday, Friday,
+                        Saturday and Sunday. <strong>No classes on Wednesday.</strong></div>
+                </div>
+                <div class="bw">
+                    <div class="w-tabs">
+                        <button class="w-tab active" onclick="switchTab(this,'cal')">📅 Pick Date</button>
+                        <button class="w-tab" onclick="switchTab(this,'sl')">🕐 Time Slot</button>
+                    </div>
+                    <!-- Calendar -->
+                    <div id="calV">
+                        <div class="ch">
+                            <button class="cn" onclick="chMo(-1)">‹</button>
+                            <div class="cm" id="calML"></div>
+                            <button class="cn" onclick="chMo(1)">›</button>
+                        </div>
+                        <div class="cdh">
+                            <div class="cdn">Su</div>
+                            <div class="cdn">Mo</div>
+                            <div class="cdn">Tu</div>
+                            <div class="cdn">We</div>
+                            <div class="cdn">Th</div>
+                            <div class="cdn">Fr</div>
+                            <div class="cdn">Sa</div>
+                        </div>
+                        <div class="cdg" id="calDG"></div>
+                        <div class="sel-display" id="selDisp"></div>
+                    </div>
+                    <!-- Slots -->
+                    <div id="slV" style="display:none">
+                        <button class="back-btn" onclick="showCal()">← Back to calendar</button>
+                        <div style="font-size:0.8rem;color:var(--ivory-dim);margin-bottom:0.5rem" id="slDate"></div>
+                        <div class="ts-hdr">Available Times</div>
+                        <div class="tsg" id="tsg"></div>
+                        <div class="sc">
+                            <label>Sessions to book (max 15)</label>
+                            <div class="cr-row">
+                                <button class="crbtn" onclick="adjSess(-1)">−</button>
+                                <div class="crnum" id="crnum">1</div>
+                                <button class="crbtn" onclick="adjSess(1)">+</button>
+                                <div class="crmax">of 15 max</div>
+                            </div>
+                        </div>
+                        <button class="bk-btn" id="bkBtn" onclick="handleBook()">Confirm Booking</button>
+                        <div class="bk-note">Secure M-Pesa or card payment at checkout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="pricing-wrap" id="pricing">
+        <div class="pricing-inner">
+            <div class="sec-lbl">Pricing</div>
+            <h2 class="sec-h">Choose Your <span class="dim">Package</span></h2>
+            <div class="pkg-grid">
+                <div class="pk">
+                    <div class="pk-glyph">1</div>
+                    <div class="pk-name">Drop-In</div>
+                    <div class="pk-price"><sup>KSh </sup>1,500</div>
+                    <div class="pk-sess">Single session</div>
+                    <ul class="pk-feats">
+                        <li>1 class of your choice</li>
+                        <li>Live DJ included</li>
+                        <li>Any available timeslot</li>
+                        <li>M-Pesa or card</li>
+                    </ul>
+                    <button class="pk-btn pk-gh" onclick="scrollTo('booking')">Book Single</button>
+                </div>
+                <div class="pk feat">
+                    <div class="pk-badge">Popular</div>
+                    <div class="pk-glyph">8</div>
+                    <div class="pk-name">Monthly Pass</div>
+                    <div class="pk-price"><sup>KSh </sup>9,500</div>
+                    <div class="pk-sess">Up to <strong>8 sessions</strong></div>
+                    <ul class="pk-feats">
+                        <li>8 classes, any style</li>
+                        <li>Live DJ every session</li>
+                        <li>Priority booking</li>
+                        <li>1-week session rollover</li>
+                        <li>M-Pesa or card</li>
+                    </ul>
+                    <button class="pk-btn pk-pr" onclick="scrollTo('booking')">Get Monthly Pass</button>
+                </div>
+                <div class="pk">
+                    <div class="pk-glyph">15</div>
+                    <div class="pk-name">Full Mastery</div>
+                    <div class="pk-price"><sup>KSh </sup>16,000</div>
+                    <div class="pk-sess">Full <strong>15 sessions</strong></div>
+                    <ul class="pk-feats">
+                        <li>All 15 classes included</li>
+                        <li>Mix any class styles</li>
+                        <li>First booking priority</li>
+                        <li>Free Social Night entry</li>
+                        <li>M-Pesa or card</li>
+                    </ul>
+                    <button class="pk-btn pk-gh" onclick="scrollTo('booking')">Book Full Pack</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="ft-inner">
+            <div class="ft-top">
+                <div class="ft-brand">
+                    <div class="ft-logo"><span class="fdot"></span>KCL Studio</div>
+                    <div class="ft-tagline">Nairobi's home of Konpa and Caribbean social dance. Real music. Real
+                        movement. Real community.</div>
+                    <div class="ft-soc">
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="TikTok">🎵</a>
+                        <a href="#" title="WhatsApp">💬</a>
+                        <a href="#" title="Facebook">👥</a>
+                        <a href="#" title="YouTube">▶️</a>
+                    </div>
+                </div>
+                <div class="ft-col">
+                    <h4>Classes</h4>
+                    <ul>
+                        <li><a href="#classes">Konpa Foundations</a></li>
+                        <li><a href="#classes">Konpa Styling</a></li>
+                        <li><a href="#classes">Social Night</a></li>
+                        <li><a href="#classes">Weekend Intensive</a></li>
+                        <li><a href="#classes">Morning Flow</a></li>
+                    </ul>
+                </div>
+                <div class="ft-col">
+                    <h4>Studio</h4>
+                    <ul>
+                        <li><a href="#about">About Konpa</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="ft-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Nairobi CBD</a></li>
+                        <li><a href="mailto:info@kclstudio.co.ke">info@kclstudio.co.ke</a></li>
+                        <li><a href="tel:+254700000000">+254 700 000 000</a></li>
+                        <li><a href="#">WhatsApp Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ft-bottom">
+                <div class="ft-copy">© 2026 KCL Dance Studio, Nairobi. All rights reserved.</div>
+                <div style="display:flex;gap:1.5rem">
+                    <a href="#" style="font-size:0.78rem;color:var(--ivory-dim);text-decoration:none">Privacy</a>
+                    <a href="#" style="font-size:0.78rem;color:var(--ivory-dim);text-decoration:none">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <span style="font-size:1.2rem">🎉</span>
+        <span id="toastMsg">Booking confirmed! Check your phone.</span>
+    </div>
+
+    <script>
+        /* ── TICKER ── */
+        const tickerItems = [
+            { icon: '📷', text: 'Follow us on Instagram', link: '#' },
+            { icon: '🎵', text: 'Watch classes on TikTok', link: '#' },
+            { icon: '💬', text: 'WhatsApp to inquire', link: '#' },
+            { icon: '👥', text: 'Join our Facebook community', link: '#' },
+            { icon: '📍', text: 'Nairobi CBD — Classes 6 days a week' },
+            { icon: '🎶', text: 'Live DJ every session — no playlists' },
+            { icon: '🔥', text: 'New Morning Flow classes — 8 AM weekdays', link: '#' },
+        ];
+        const track = document.getElementById('tickerTrack');
+        [...tickerItems, ...tickerItems].forEach(it => {
+            const d = document.createElement('div'); d.className = 'ticker-item';
+            const text = it.link ? `<a href="${it.link}">${it.text}</a>` : it.text;
+            d.innerHTML = `<span class="ticker-dot"></span>${it.icon} ${text}`;
+            track.appendChild(d);
+        });
+
+        /* ── MOBILE MENU ── */
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+            document.getElementById('hamburger').textContent = document.getElementById('mobileMenu').classList.contains('open') ? '✕' : '☰';
+        }
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('hamburger').textContent = '☰';
+        }
+
+        /* ── SCROLL ── */
+        function scrollTo(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            closeMenu();
+        }
+
+        /* ── RHYTHM CANVAS ── */
+        const cvs = document.getElementById('rhythmCanvas'), cx = cvs.getContext('2d');
+        let W, H, lines = [];
+        function resize() {
+            W = cvs.width = cvs.offsetWidth; H = cvs.height = cvs.offsetHeight;
+            lines = [];
+            for (let i = 0; i < 7; i++) lines.push({ y: H * (0.08 + i * 0.14), ph: Math.random() * Math.PI * 2, amp: 15 + Math.random() * 25, sp: 0.005 + Math.random() * 0.005, fr: 0.006 + Math.random() * 0.007, al: 0.03 + Math.random() * 0.05 });
+        }
+        function draw() {
+            cx.clearRect(0, 0, W, H);
+            lines.forEach(l => {
+                cx.beginPath();
+                for (let x = 0; x <= W; x += 2) { const y = l.y + Math.sin(x * l.fr + l.ph) * l.amp; x === 0 ? cx.moveTo(x, y) : cx.lineTo(x, y) }
+                cx.strokeStyle = `rgba(255,48,96,${l.al})`; cx.lineWidth = 1.5; cx.stroke();
+                l.ph += l.sp;
+            });
+            requestAnimationFrame(draw);
+        }
+        window.addEventListener('resize', resize); resize(); draw();
+
+        /* ── CALENDAR ── */
+        const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        let vY = new Date().getFullYear(), vM = new Date().getMonth(), selD = null, selS = null, sessN = 1;
+        function isDis(d) { return d.getDay() === 3 || d < new Date(new Date().toDateString()) }
+        function renderCal() {
+            document.getElementById('calML').textContent = `${MONTHS[vM]} ${vY}`;
+            const g = document.getElementById('calDG'); g.innerHTML = '';
+            const fd = new Date(vY, vM, 1).getDay(), dim = new Date(vY, vM + 1, 0).getDate(), today = new Date();
+            for (let i = 0; i < fd; i++) { const e = document.createElement('div'); e.className = 'cd emp'; g.appendChild(e) }
+            for (let d = 1; d <= dim; d++) {
+                const e = document.createElement('div'), dt = new Date(vY, vM, d);
+                const dis = isDis(dt), isT = dt.toDateString() === today.toDateString(), isSel = selD && dt.toDateString() === selD.toDateString();
+                e.className = 'cd' + (dis ? ' dis' : '') + (isT && !dis ? ' tod' : '') + (isSel ? ' sel' : '');
+                e.innerHTML = `<span>${d}</span>`;
+                if (!dis) e.addEventListener('click', () => { selD = dt; renderCal(); document.getElementById('selDisp').textContent = `✓ ${dt.toDateString()}`; setTimeout(() => showSl(), 500) });
+                g.appendChild(e);
+            }
+        }
+        function chMo(d) { vM += d; if (vM < 0) { vM = 11; vY-- } if (vM > 11) { vM = 0; vY++ } renderCal() }
+        function switchTab(btn, v) { document.querySelectorAll('.w-tab').forEach(t => t.classList.remove('active')); btn.classList.add('active'); v === 'cal' ? showCal() : showSl() }
+        function showCal() { document.getElementById('calV').style.display = ''; document.getElementById('slV').style.display = 'none'; document.querySelectorAll('.w-tab')[0].classList.add('active'); document.querySelectorAll('.w-tab')[1].classList.remove('active') }
+        function showSl() { document.getElementById('calV').style.display = 'none'; document.getElementById('slV').style.display = ''; document.querySelectorAll('.w-tab')[0].classList.remove('active'); document.querySelectorAll('.w-tab')[1].classList.add('active'); document.getElementById('slDate').textContent = selD ? selD.toDateString() : 'No date selected — go back to pick one'; renderSl() }
+        const SL = [{ t: '9:00 AM', n: 15 }, { t: '11:30 AM', n: 9 }, { t: '2:00 PM', n: 3 }, { t: '4:30 PM', n: 15 }, { t: '6:00 PM', n: 7 }, { t: '7:30 PM', n: 0 }];
+        function renderSl() {
+            const g = document.getElementById('tsg'); g.innerHTML = '';
+            SL.forEach((s, i) => {
+                const e = document.createElement('div'), full = s.n === 0, low = s.n > 0 && s.n <= 4;
+                e.className = 'ts' + (full ? ' tf' : '') + (selS === i ? ' tsel' : '');
+                const sc = full ? '' : 'ts-sp' + (low ? ' low' : '');
+                e.innerHTML = `<div class="ts-time">${s.t}</div><div class="${sc}" style="font-size:0.68rem;color:${full ? 'rgba(255,255,255,0.3)' : low ? '#FFB43C' : 'var(--ivory-dim)'};margin-top:0.15rem">${full ? 'Full' : `${15 - s.n}/15 taken`}</div>`;
+                if (!full) e.addEventListener('click', () => { selS = i; renderSl() });
+                g.appendChild(e);
+            });
+            upBk();
+        }
+        function adjSess(d) { sessN = Math.max(1, Math.min(15, sessN + d)); document.getElementById('crnum').textContent = sessN }
+        function upBk() { const b = document.getElementById('bkBtn'); if (!selD) { b.textContent = 'Select a date first'; return } if (selS === null) { b.textContent = 'Select a timeslot'; return } b.textContent = `Confirm ${sessN} Session${sessN > 1 ? 's' : ''} → Proceed to Payment` }
+        function handleBook() { if (!selD || selS === null) return; showToast(`✓ ${sessN} session${sessN > 1 ? 's' : ''} on ${selD.toDateString()} at ${SL[selS].t} — redirecting to payment…`) }
+
+        /* ── GALLERY ── */
+        function openLb(el) {
+            const img = el.querySelector('img');
+            document.getElementById('lbImg').src = img.src;
+            document.getElementById('lightbox').classList.add('open');
+        }
+        function closeLb(e) {
+            if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lb-close'))
+                document.getElementById('lightbox').classList.remove('open');
+        }
+
+        /* ── TOAST ── */
+        function showToast(msg) {
+            document.getElementById('toastMsg').textContent = msg;
+            const t = document.getElementById('toast');
+            t.classList.add('up');
+            setTimeout(() => t.classList.remove('up'), 5000);
+        }
+
+        /* ── INIT ── */
+        setTimeout(() => { document.getElementById('barFill').style.width = '40%' }, 700);
+        renderCal();
+    </script>
+</body>
+
+</html>
